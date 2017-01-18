@@ -12,7 +12,7 @@ namespace TaskTracker.Data
             : base(options)
         { }
 
-        public DbSet<ToDo> TaskTracker { get; set;}
+        public DbSet<ToDo> ToDo { get; set;}
 
 
      
