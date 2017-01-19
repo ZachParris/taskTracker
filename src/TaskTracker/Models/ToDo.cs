@@ -5,10 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskTracker.Models
 {
-    public class ToDo
+    public class ToDo 
     {
         [Key]
-        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -19,9 +18,6 @@ namespace TaskTracker.Models
         [Required]
         public OrderStatus Status { get; set; }
 
-
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CompletedOn { get; set; }
 
 

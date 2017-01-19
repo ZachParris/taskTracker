@@ -8,9 +8,10 @@ using TaskTracker.Data;
 namespace TaskTracker.Migrations
 {
     [DbContext(typeof(BangazonContext))]
-    partial class BangazonContextModelSnapshot : ModelSnapshot
+    [Migration("20170119010850_PleaseWork")]
+    partial class PleaseWork
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

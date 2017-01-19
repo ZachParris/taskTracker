@@ -8,9 +8,10 @@ using TaskTracker.Data;
 namespace TaskTracker.Migrations
 {
     [DbContext(typeof(BangazonContext))]
-    partial class BangazonContextModelSnapshot : ModelSnapshot
+    [Migration("20170119010009_NewTableMigration")]
+    partial class NewTableMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -21,7 +22,8 @@ namespace TaskTracker.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CompletedOn");
+                    b.Property<DateTime>("CompletedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("Description");
 

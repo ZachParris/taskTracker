@@ -39,25 +39,46 @@ namespace TaskTracker.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
        
 
+
+        [HttpGet("{id}", Name = "GetToDo")]
+        public IActionResult Get([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                // returns a single customer 
+                ToDo todo = context.ToDo.Single(m => m.Id == id);
+
+                if (todo == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(todo);
+            }
+            catch (System.InvalidOperationException ex)
+            {
+                return NotFound();
+            }
+
+
+        }
+
+
         [HttpPost]
-
-        //   !ModelState is comparing against all your annotations, etc. 
-
         public IActionResult Post([FromBody] ToDo todo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            // 
+            
             context.ToDo.Add(todo);
 
             try
@@ -80,17 +101,63 @@ namespace TaskTracker.Controllers
         }
 
         // PUT api/values/5
+ 
+
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody]ToDo todo)
         {
+
+            if (todo.Id != id)
+            {
+                return BadRequest(ModelState);
+
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+
+                context.Update(todo);
+                context.SaveChanges();
+
+            }
+            catch (System.InvalidOperationException ex)
+            {
+                return NotFound();
+            }
+            return Ok(todo);
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                ToDo todo = context.ToDo.Single(m => m.Id == id);
+
+                if (todo == null)
+                {
+                    return NotFound();
+                }
+                context.ToDo.Remove(todo);
+                context.SaveChanges();
+
+                return Ok(todo);
+            }
+            catch (System.InvalidOperationException ex)
+            {
+                return NotFound();
+            }
+        }
         private bool ToDoExists(int id)
         {
             return context.ToDo.Count(e => e.Id == id) > 0;
