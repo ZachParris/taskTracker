@@ -78,7 +78,13 @@ namespace TaskTracker.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+
+
+            if (todo.Status == OrderStatus.Completed)
+            {
+                todo.CompletedOn = DateTime.Now; 
+            }
+
             context.ToDo.Add(todo);
 
             try
@@ -116,6 +122,12 @@ namespace TaskTracker.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            if (todo.Status == OrderStatus.Completed)
+            {
+                todo.CompletedOn = DateTime.Now;
+            }
+
             try
             {
 
