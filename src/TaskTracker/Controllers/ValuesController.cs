@@ -53,7 +53,7 @@ namespace TaskTracker.Controllers
 
             try
             {
-                // returns a single customer 
+                // returns a single ToDo 
                 ToDo todo = context.ToDo.Single(m => m.Id == id);
 
                 if (todo == null)
@@ -92,8 +92,8 @@ namespace TaskTracker.Controllers
             }
         }
 
-     
 
+        // POST api/values/
         [HttpPost]
         public IActionResult Post([FromBody] ToDo todo)
         {
