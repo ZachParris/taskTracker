@@ -2,6 +2,11 @@
 
 
 # taskTracker
+## Welcome to the taskTracker API 
+This API, built with ASP.Net CORE 1.0 allows users to do the following:
+1. Create a new task.
+1. Update a task's Name, Description and Status.
+1. Request a list of tasks by status.
 
 ## System requirements 
 
