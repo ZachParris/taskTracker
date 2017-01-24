@@ -20,14 +20,16 @@ namespace TaskTracker.Models
 
         public DateTime CompletedOn { get; set; }
 
+        public enum OrderStatus
+        {
+            ToDo,
+            InProgress,
+            Completed
+        }
+
+
 
     }
 
-    public enum OrderStatus
-    {
-        ToDo,
-        InProgress,
-        Completed
-    }
 
 }

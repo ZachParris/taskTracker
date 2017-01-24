@@ -7,6 +7,7 @@ using TaskTracker.Data;
 using TaskTracker.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using static TaskTracker.Models.ToDo;
 
 namespace TaskTracker.Controllers
 {
@@ -70,6 +71,28 @@ namespace TaskTracker.Controllers
 
         }
 
+        [HttpGet("ByStatus/{status}")]
+        public IActionResult ByStatus(int status)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+            try
+            {
+                IQueryable<ToDo> todos = context.ToDo.Where(t => t.Status == (ToDo.OrderStatus)status);
+                return Ok(todos);
+            }
+
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+     
 
         [HttpPost]
         public IActionResult Post([FromBody] ToDo todo)
