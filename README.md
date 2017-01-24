@@ -32,7 +32,7 @@ Sample JSON format for Postman returned from Get All Tasks
   {
     "id": 7,
     "name": "Moar Chores",
-    "description": "Things to do this week like applying for jobs",
+    "description": "Things to do this week, applying for jobs",
     "status": 0,
     "completedOn": "0001-01-01T00:00:00"
   },
