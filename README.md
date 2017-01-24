@@ -1,4 +1,12 @@
+
+
+
 # taskTracker
+
+## System requirements 
+
+* .NET Core [installed](https://www.microsoft.com/net/core#macos).
+* [Visual Studio Community Edition](https://www.visualstudio.com/vs/community/) installed for existing Windows users.
 ### How to use the TaskTracker API 
 
 ### Get all Tasks 
