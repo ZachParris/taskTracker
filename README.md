@@ -7,6 +7,11 @@
 
 * .NET Core [installed](https://www.microsoft.com/net/core#macos).
 * [Visual Studio Community Edition](https://www.visualstudio.com/vs/community/) installed for existing Windows users.
+
+Next: Fork or clone this respository. Open code in Visual Studio; then, open the ```Package Manager``` console and run the following command sequence:
+
+Add-Migration Name
+Update-Database
 ### How to use the TaskTracker API 
 
 ### Get all Tasks 
