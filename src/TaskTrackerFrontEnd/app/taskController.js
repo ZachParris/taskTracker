@@ -4,7 +4,7 @@ app.controller("taskController", ['$scope', '$location', 'taskService', function
     $scope.taskList = [];
     $scope.newTask = {};
 
-    $scope.addNewPost = function (input) {
+    $scope.addThisTask = function (input) {
         console.log(input);
         taskService.addNewTask(input).then(function (response) {
             $scope.taskList.unshift(response.data);

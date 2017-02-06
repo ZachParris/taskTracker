@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html data-ng-app="App">
 <head>
     <title></title>
@@ -6,10 +6,33 @@
     <link href="content/bootstrap.min.css" rel="stylesheet">
     <base href="/">
 </head>
-<body>
-
-    <div data-ng-view=""></div>
-
+<body class="container-fluid" >
+    <section class="row" ng-init="getAllTasks()" ng-controller="taskController as ctrl">
+        <h1>Task Tracker</h1>
+        <div class="col-md-3 form-group">
+            <form action="/" method="post">
+                <textarea style="width:280px; height:150px;" id="textarea" rows="4" ng-model="newTask.Name">Name</textarea>
+                <textarea style="width:280px; height:150px;" id="textarea" rows="4" ng-model="newTask.Description">Description</textarea>
+                <label class="checkbox-inline"><input type="checkbox" value="" ng-model="newTask.Status">To DO</label>
+                <label class="checkbox-inline"><input type="checkbox" value="" ng-model="newTask.Status">In Progress</label>
+                <label class="checkbox-inline"><input type="checkbox" value="" ng-model="newTask.Status">Complete</label>
+                <button type="submit" class="btn btn-default form-control" ng-click="addThisTask(newTask)">Add</button>
+            </form>
+        </div>
+        <div>
+            <h2>Tasks</h2>
+            <div class="container col-sm-8 col-sm-offset-1">
+                <ol>
+                    <li class="list-group-item" ng-repeat="task in taskList">
+                        <p>{{task.task}}</p>
+                        <a ng-click="removeTask()" href="btn btn-default">Remove</a>
+                        <a ng-click="updateTask()" href="btn btn-default">Update</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    
    
     <!--Angular Stuff-->
     <script src="scripts/angular.js"></script>
