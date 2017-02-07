@@ -1,7 +1,8 @@
 var app = angular.module('App', ['ngRoute']);
 
-app.config(function ($routeprovider) {
+app.config(function ($routeProvider) {
     $routeProvider.when("/", {
-        controller: "taskController"
+        controller: "taskController",
+        templateUrl: "index.html"
     }).otherwise({ redirectTo: "/" });
 })
