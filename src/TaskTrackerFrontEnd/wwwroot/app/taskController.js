@@ -24,4 +24,14 @@ app.controller("taskController", ['$scope', '$location', 'taskService', function
             $scope.taskList.remove(post)
         })
     }
+    $scope.editThisTask = function () {
+        taskService.editTask().then(function (post) {
+            $scope.taskList.remove(post)
+        })
+    }
+    $scope.getByStatus = function () {
+        taskService.getTaskByStatus().then(function (post) {
+            $scope.taskList.remove(post)
+        })
+    }
 }]);
