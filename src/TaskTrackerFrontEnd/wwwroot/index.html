@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="App">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="content/bootstrap.min.css" rel="stylesheet">
+    <base href="/">
+</head>
+<body class="container-fluid" >
+    <section class="row" ng-init="getAllTasks()" ng-controller="taskController as ctrl">
+        <h1>Task Tracker</h1>
+        <div class="col-md-3 form-group">
+            <form action="/" method="post">
+                <div>
+                    <textarea style="width:280px; height:25px;" id="textarea" rows="4" placeholder="Name" ng-model="newTask.Name"></textarea>
+                    <textarea style="width:280px; height:25px;" id="textarea" rows="4" placeholder="Description" ng-model="newTask.Description"></textarea>
+                </div>
+                <div>
+                    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="newTask.Status">To DO</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="newTask.Status">In Progress</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="newTask.Status">Complete</label>
+                </div>
+                <button type="submit" class="btn btn-default form-control" ng-click="addThisTask(newTask)">Add</button>
+            </form>
+        </div>
+        <div>
+            <h2>Tasks</h2>
+            <div class="container col-sm-8 col-sm-offset-1">
+                <ol>
+                    <li class="list-group-item" ng-repeat="task in taskList">
+                        <p>{{task}}</p>
+                        <a ng-click="removeTask()" href="btn btn-default">Remove</a>
+                        <a ng-click="updateTask()" href="btn btn-default">Update</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    
+   
+    <!--Angular Stuff-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/taskService.js"></script>
+    <script src="app/taskController.js"></script>
+</body>
+</html>
